@@ -19,7 +19,7 @@ spec:
         image: 076880417388.dkr.ecr.cn-northwest-1.amazonaws.com.cn/team-a:eureka-server-8
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8080
+        - containerPort: 8761
       imagePullSecrets:
       - name: ecr-secret
 ---
@@ -32,7 +32,7 @@ spec:
   selector:
     k8s-app: eureka-server
   ports:
-  - port: 8080
+  - port: 8761
     name: http
     protocol: TCP
 ---
@@ -49,4 +49,4 @@ spec:
       - path: /
         backend:
           serviceName: eureka-server
-          servicePort: 8080
+          servicePort: 8761
